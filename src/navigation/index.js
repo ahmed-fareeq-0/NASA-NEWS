@@ -15,9 +15,10 @@ const Navigation = () => {
     return (
         <NavigationContainer>
                 <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="welcome" >
-                <Stack.Screen name="welcome" component={Welcome} />
+                {/* <Stack.Screen name="welcome" component={Welcome} />
                 <Stack.Screen name="regster" component={Regster} />
-                <Stack.Screen name="login" component={Login} />
+                <Stack.Screen name="login" component={Login} /> */}
+                <Stack.Screen name="browse" component={Browse} />
                 
                 </Stack.Navigator>
         </NavigationContainer>

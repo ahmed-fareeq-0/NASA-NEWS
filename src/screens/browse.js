@@ -1,11 +1,13 @@
 import { Text, View } from 'react-native';
-import react from 'react';
+import React from 'react';
+import Header from '../components/header';
+import News from '../components/news';
 
 const Browse = () => {
-
     return (
-        <View>
-            <Text>Browse</Text>
+        <View style={{backgroundColor:"#3F1D38"}}>
+            <Header />
+            <News />
         </View>
     );
 }
