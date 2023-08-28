@@ -1,14 +1,16 @@
 import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 import React from 'react';
 import avatar from "./../../assets/ali.jpg";
+import { useNavigation } from '@react-navigation/native';
 
 const Header = () => {
+    const navigation = useNavigation();
 
     return (
         <View style={styles.container}>
             <TextInput style={styles.searchInput} placeholder='search' placeholderTextColor="#999" />
             <View style={styles.header}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('settings')}>
                     <Image source={avatar} style={styles.avatar} />
                 </TouchableOpacity>
                 <Text style={styles.logo}>Browse</Text>
@@ -36,7 +38,7 @@ const styles = StyleSheet.create({
         borderRadius:50,
     },
     logo:{
-        fontSize: 20,
+        fontSize: 28,
         fontWeight:"bold",
         color:'#fff'
         
