@@ -1,27 +1,33 @@
-import { Text, View, StyleSheet, TextInput } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import { Context } from '../context/provider';
+import React, { useState, useContext } from 'react';
 
 const Login = () => {
     const navigation = useNavigation();
 
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+    const { login } = useContext(Context)
+
+    
     return (
         <View style={styles.container} >
             <Text style={styles.title}>Login</Text>
 
             <View style={styles.inputDad}>
                 {/* <Icon name="mail" color="#00716F" size={24}/> */}
-                <TextInput style={styles.input} placeholder='Enter email' />
+                <TextInput style={styles.input} placeholder='Enter email' onChangeText={(text) => setEmail(text)} />
             </View>
 
             <View style={styles.inputDad}>
                 {/* <Icon name="mail" color="#00716F" size={24}/> */}
-                <TextInput style={styles.input} placeholder='Enter password' />
+                <TextInput style={styles.input} placeholder='Enter password' onChangeText={(text) => setPassword(text)} />
             </View>
 
-            <View style={styles.btnDad}>
+            <TouchableOpacity style={styles.btnDad} onPress={() => login(email, password)}>
                 <Text style={styles.btn}>sign up</Text>
-            </View>
+            </TouchableOpacity>
 
             <View style={{ alignSelf: "center", paddingVertical: 30 }}>
                 <Text>are you login?</Text>
@@ -41,7 +47,7 @@ const styles = StyleSheet.create({
         fontSize: 35,
         // fontFamily: "SemiBold",
         marginHorizontal: 30,
-        color:'#1D267D'
+        color: '#1D267D'
         // alignSelf: "center",
     },
     inputDad: {
@@ -61,7 +67,7 @@ const styles = StyleSheet.create({
     },
     btn: {
         color: "white",
-        fontSize:18
+        fontSize: 18
         // fontFamily: "SemiBold"
     },
     regsterPage: {

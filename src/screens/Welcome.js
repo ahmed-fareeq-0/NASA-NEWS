@@ -31,6 +31,21 @@ const Welcome = () => {
         );
     };
 
+    const RenderNextButton = () => {
+        return(
+            <View>
+                <Text style={styles.naxtdoneBtn}>Next</Text>
+            </View>
+        )
+    }
+    const RenderDoneButton = () => {
+        return(
+            <View>
+                <Text style={styles.naxtdoneBtn}>Done</Text>
+            </View>
+        )
+    }
+
     return (
         <>
             <AppIntroSlider
@@ -39,6 +54,8 @@ const Welcome = () => {
                 onDone={onDone}
                 showSkipButton={false}
                 showNextButton={true}
+                renderNextButton={RenderNextButton}
+                renderDoneButton={RenderDoneButton}
                 dotStyle={{ backgroundColor: 'rgba(0, 0, 0, .2)' }}
                 activeDotStyle={{ backgroundColor: '#057DCD' }}
             />
@@ -49,7 +66,7 @@ const Welcome = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: 'red',
         alignItems: 'center',
         padding: 10,
         justifyContent: 'center',
@@ -81,6 +98,14 @@ const styles = StyleSheet.create({
         marginBottom: 16,
         fontWeight: 'bold',
     },
+    naxtdoneBtn:{
+        fontSize:25,
+        padding: 4,
+        paddingHorizontal:10,
+        color:'#057DCD',
+        borderRadius:8,
+        fontWeight: 'bold',
+    }
 });
 
 const slides = [

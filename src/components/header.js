@@ -8,13 +8,13 @@ const Header = () => {
 
     return (
         <View style={styles.container}>
-            <TextInput style={styles.searchInput} placeholder='search' placeholderTextColor="#999" />
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => navigation.navigate('settings')}>
                     <Image source={avatar} style={styles.avatar} />
                 </TouchableOpacity>
                 <Text style={styles.logo}>Browse</Text>
             </View>
+            <TextInput style={styles.searchInput} placeholder='search' placeholderTextColor="#000" />
         </View>
     );
 }
@@ -40,14 +40,14 @@ const styles = StyleSheet.create({
     logo:{
         fontSize: 28,
         fontWeight:"bold",
-        color:'#fff'
+        // color:'#fff'
         
     },
     searchInput: {
         // backgroundColor: "#fff",
         // padding: 15,
-        color:"#fff",
-        borderColor:"#fff",
+        color:"#000",
+        borderColor:"#000",
         // borderRadius:5,
         borderBottomWidth:1,
         flexDirection: "row",

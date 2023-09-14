@@ -1,9 +1,22 @@
-import { Text, View, StyleSheet, TextInput } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, {useState, useContext} from 'react';
+import { Context } from '../context/provider';
 
 const Regster = () => {
     const navigation = useNavigation();
+
+    const [ name, setName ] = useState(null);
+    const [ email, setEmail ] = useState(null);
+    const [ password, setPassword ] = useState(null);
+
+    const {register} = useContext(Context)
+
+    const handleRegister = async () => {
+        await register(name, email, password);
+        navigation.navigate("login")
+        
+    };
 
     return (
         <View style={styles.container} >
@@ -11,22 +24,22 @@ const Regster = () => {
 
             <View style={styles.inputDad}>
                 {/* <Icon name="mail" color="#00716F" size={24}/> */}
-                <TextInput style={styles.input} placeholder='Your name' />
+                <TextInput style={styles.input} placeholder='Your name' onChangeText={(text) => setName(text)} />
             </View>
 
             <View style={styles.inputDad}>
                 {/* <Icon name="mail" color="#00716F" size={24}/> */}
-                <TextInput style={styles.input} placeholder='Enter email' />
+                <TextInput style={styles.input} placeholder='Enter email' onChangeText={(text) => setEmail(text)} />
             </View>
 
             <View style={styles.inputDad}>
                 {/* <Icon name="mail" color="#00716F" size={24}/> */}
-                <TextInput style={styles.input} placeholder='Enter password' />
+                <TextInput style={styles.input} placeholder='Enter password' onChangeText={(text) => setPassword(text)} />
             </View>
 
-            <View style={styles.btnDad}>
+            <TouchableOpacity style={styles.btnDad} onPress={handleRegister}>
                 <Text style={styles.btn}>sign up</Text>
-            </View>
+            </TouchableOpacity>
 
             <View style={{ alignSelf: "center", paddingVertical: 30 }}>
                 <Text>are you regstered?</Text>

@@ -1,28 +1,34 @@
 import React, {useState, useContext} from 'react';
 import { View, Text, StyleSheet, Image, FlatList } from 'react-native';
+import { Context } from './../context/provider';
 import img1 from "./../../assets/photo_2023-08-22_03-24-09.jpg";
 import img2 from "./../../assets/photo_2023-08-27_21-49-59.jpg";
 import img3 from "./../../assets/photo.jpg";
 import img4 from "./../../assets/photo_2023-08-22_03-24-09t.jpg";
 import img5 from "./../../assets/photo_2023-08-22_03-24-08.jpg";
-import { Context } from '../context/provider';
 
-const News = () => {
-    const {postNasa} = useContext(Context)
+const PicturesOfMars = () => {
+    const {marsRoverPhotosData} = useContext(Context)
+
     return (
         <View style={{ marginBottom: 350 }}>
             <FlatList
-                data={postNasa}
+                data={marsRoverPhotosData}
                 keyExtractor={(item, i) => i }
                 renderItem={({ item }) => (
                     <View>
                         <View style={[styles.card, styles.cardElevated]}>
-                            <Image source={{ uri: item.url }} style={styles.cardImage} />
+                            <Image source={{ uri: item.img_src }} style={styles.cardImage} />
                             <View style={styles.cardBody}>
-                                <Text style={styles.cardTitle}>{item.title}</Text>
-                                <Text style={styles.cardLabel}>{item.researchCenter}</Text>
-                                <Text style={styles.cardDescription}>{item.explanation}</Text>
-                                <Text style={styles.cardFooter}>{item.date} away</Text>
+                                <Text style={styles.cardTitle}>{item.camera.name}</Text>
+                                <Text style={styles.cardTitle}>{item.camera.full_name}</Text>
+                                <Text style={styles.cardLabel}>landing date: {item.rover.landing_date}</Text>
+                                <Text style={styles.cardLabel}>launch date: {item.rover.launch_date}</Text>
+                                <Text style={styles.cardLabel}>status: {item.rover.status}</Text>
+                                <Text style={styles.cardLabel}>max sol: {item.rover.max_sol}</Text>
+                                <Text style={styles.cardLabel}>max date: {item.rover.max_date}</Text>
+                                <Text style={styles.cardLabel}>total photos: {item.rover.total_photos}</Text>
+                                <Text style={styles.cardFooter}>date: {item.earth_date}</Text>
                             </View>
                         </View>
                     </View>
@@ -146,4 +152,4 @@ const data = [
     },
 ]
 
-export default News
+export default PicturesOfMars
